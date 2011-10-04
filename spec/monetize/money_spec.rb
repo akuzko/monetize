@@ -31,6 +31,13 @@ describe Monetize::Money do
     it "should raise exception when raising money to power" do
       expect{ money ** 3 }.to raise_error Monetize::Money::InvalidValue
     end
+    
+    it "should be YAML serializable" do
+      yaml = money.to_yaml
+      yaml_money = YAML.load yaml
+      yaml_money.should be_instance_of Monetize::Money
+      yaml_money.should == money
+    end
   end
   
   context "class methods" do
