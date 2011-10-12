@@ -33,7 +33,7 @@ describe Monetize::Money do
     end
     
     it "should be YAML serializable" do
-      yaml = money.to_yaml
+      yaml = money.to_yml
       yaml_money = YAML.load yaml
       yaml_money.should be_instance_of Monetize::Money
       yaml_money.should == money
